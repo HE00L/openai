@@ -2,11 +2,9 @@ package com.xoto.openai.adaModel;
 
 import java.util.Map;
 
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.theokanning.openai.completion.CompletionChoice;
@@ -20,8 +18,8 @@ public class AdaResource {
     private OpenAiService service = new OpenAiService(System.getenv("API_KEY"));
 
     @PostMapping("/get")
-    public CompletionChoice getAnswer(@RequestBody Map<String,Object> map) {
-        
+    public CompletionChoice getAnswer(@RequestBody Map<String, Object> map) {
+
         CompletionRequest completionRequest = CompletionRequest.builder()
                 .model("ada")
                 .prompt(map.getOrDefault("content", "").toString())
@@ -35,4 +33,3 @@ public class AdaResource {
     }
 
 }
-
